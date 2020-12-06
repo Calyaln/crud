@@ -1,1 +1,10 @@
 <h1>Products</h1>
+
+{{#each allProducts}}
+<div class="product card">
+    {{this.image}}
+    {{this.name}}
+    {{this.brand}}
+    {{this.price}}
+</div>
+{{/each}}

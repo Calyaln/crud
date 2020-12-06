@@ -1,10 +1,13 @@
+const mongoose = require("mongoose");
+
 require("dotenv").config();
 require("./config/mongodb");
 
 const express = require("express");
 const hbs = require("hbs");
 const app = express();
-const ProductModel = require("./model/Product");
+const ProductModel = require("./models/Product");
+const data = require("./data");
 
 // file allowed for browser download
 app.use(express.static(__dirname + "/public"));
@@ -14,15 +17,15 @@ app.use(express.urlencoded());
 
 // view engine setup
 app.set("views", __dirname + "/views");
-app.set("views engine", "hbs");
+app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 
-// route for the home page
 // app.get("/" (req, res) => {
 //     res.redirect("/home");
-// })
+// });
 
-app.get("/home", (req, res) => {
+// route for the home page
+app.get(["/", "/home"], (req, res) => {
   res.render("home");
 });
 
